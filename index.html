@@ -8,12 +8,28 @@
     <!-- npx tailwindcss -i ./input.css -o ./style.css --watch -->
     <link rel = "stylesheet" href = "style.css"> <!-- Make sure to link your Tailwind CSS file -->
 </head>
-<body class="bg-gray-100 text-center p-10">
-    <h1 class="text-4xl font-bold text-blue-600">Tailwind CSS is Working!</h1>
-    <p class="mt-4 text-gray-700 text-lg">This is a test paragraph to check Tailwind's utility classes.</p>
-
-    <button class="mt-6 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-700">
-        Test Button
-    </button>
-</body>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="space-y-4">
+      <!-- Buttons to change content and color -->
+      <div class="flex space-x-4">
+        <button onclick="changeContent('Content 1', 'bg-blue-500')" class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">Show Content 1</button>
+        <button onclick="changeContent('Content 2', 'bg-green-500')" class="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600">Show Content 2</button>
+        <button onclick="changeContent('Content 3', 'bg-red-500')" class="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600">Show Content 3</button>
+      </div>
+  
+      <!-- Dynamic Panel -->
+      <div id="content-panel" class="w-full max-w-md p-6 text-white bg-blue-500 rounded-lg shadow-lg">
+        Content 1
+      </div>
+    </div>
+  
+    <script>
+      // Function to change panel content and color
+      function changeContent(text, bgColor) {
+        const panel = document.getElementById('content-panel');
+        panel.textContent = text;        // Update panel content
+        panel.className = `w-full max-w-md p-6 text-white ${bgColor} rounded-lg shadow-lg`;  // Update panel background color
+      }
+    </script>
+  </body>
 </html>
