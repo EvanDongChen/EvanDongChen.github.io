@@ -18,11 +18,18 @@
 
 <style>
     .scroll-btn {
-        transition: background-color 0.3s ease; /* Smooth transition for color change */
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for color change and size */
     }
 
     .scroll-btn:hover {
         filter: brightness(0.8); /* Darkens the button color on hover */
+        transform: scale(1.1); /* Increases the button size by 10% on hover */
+    }
+    .emoji {
+        position: absolute;
+        font-size: 1.5rem;
+        opacity: 1;
+        transition: transform 1s ease-out, opacity 1s ease-out;
     }
 </style>
 
@@ -440,6 +447,44 @@
         });
     });
 </script>
+
+<script>
+    // Function to create a single emoji particle
+    function createEmojiParticle(x, y, emoji) {
+        const particle = document.createElement('span');
+        particle.textContent = emoji;
+        particle.classList.add('emoji');
+        document.body.appendChild(particle);
+
+        // Position the particle
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+
+        // Animate the particle
+        const size = Math.random() * 20 + 10;
+        particle.style.fontSize = `${size}px`;
+        particle.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * -100 - 50}px) scale(1)`;
+        particle.style.opacity = 0;
+
+        // Remove the particle after animation
+        setTimeout(() => particle.remove(), 1000);
+    }
+
+    // Function to generate multiple emoji particles
+    function generateEmojiParticles(event) {
+        const emojis = ['✨', '🌟', '💫', '🎉', '💥'];
+        const { clientX: x, clientY: y } = event;
+        
+        for (let i = 0; i < 5; i++) {
+            const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+            createEmojiParticle(x, y, emoji);
+        }
+    }
+
+    // Event listener for hovering over the title
+    document.getElementById('intro-title').addEventListener('mouseenter', generateEmojiParticles);
+</script>
+
 
 
 </body>
