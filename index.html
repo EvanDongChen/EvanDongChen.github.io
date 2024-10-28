@@ -18,25 +18,22 @@
 
 <style>
     .scroll-btn {
-        transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for color change and size */
+        transition: background-color 0.3s ease; /* Smooth transition for color change */
     }
 
     .scroll-btn:hover {
         filter: brightness(0.8); /* Darkens the button color on hover */
-        transform: scale(1.1); /* Increases the button size by 10% on hover */
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
     }
-    .emoji {
-        position: absolute;
-        font-size: 1.5rem;
-        opacity: 1;
-        transition: transform 1s ease-out, opacity 1s ease-out;
-    }
+
+
 </style>
 
 
 <!-- Navigation Bar -->
 <div class="flex justify-center py-6 bg-white sticky top-0 z-20 shadow-md">
-    <div class="flex space-x-4 border p-2 rounded-lg bg-gray-100">
+    <div class="flex space-x-4  p-2 rounded-lg">
         <button style="background-color: #3D348B; color: #ffffff;" class="scroll-btn text-lg font-semibold px-4 py-2 rounded" data-target="#section1">📝 Introduction</button>
         <button style="background-color: #5A56BC; color: #ffffff;" class="scroll-btn text-lg font-semibold px-4 py-2 rounded" data-target="#section2">🚀 Projects</button>
         <button style="background-color: #B79877; color: #ffffff;" class="scroll-btn text-lg font-semibold px-4 py-2 rounded" data-target="#section3">🎓 Education</button>
@@ -48,7 +45,7 @@
 
 
 <!-- Centered Content Sections with Black Backgrounds -->
-<section id="section1" class="flex items-center justify-center bg-black mt-20" style="height: auto; margin-top: 2rem; margin-bottom: 2rem;">
+<section id="section1" class="flex items-center justify-center mt-20" style="height: auto; margin-top: 2rem; margin-bottom: 2rem;">
     <div class="bg-white border-4 shadow-lg rounded-lg p-8 w-4/5 max-w-5xl" style="border-color: #3D348B;">
         <!-- Title -->
         <h1 class="text-center text-4xl font-bold">📝 Introduction📝 </h1>
@@ -74,7 +71,7 @@
 
     
   <!-- SECTION 2: PROJECTS -->
-  <section id="section2" class="flex items-center justify-center bg-black py-16 mt-30" style="height: auto; margin-top: 2rem; margin-bottom: 2rem;">
+  <section id="section2" class="flex items-center justify-center  py-16 mt-30" style="height: auto; margin-top: 2rem; margin-bottom: 2rem;">
     <div class="bg-white border-4 shadow-lg rounded-lg p-8 w-4/5 max-w-5xl text-center" style="border-color: #5A56BC;">
         <h2 class="text-4xl font-bold text-black mb-8">🚀Projects🚀</h2>
         
@@ -142,7 +139,7 @@
 
 <!-- SECTION 3: Education -->
 
-<section id="section3" class="flex items-center justify-center bg-black py-16 mt-30" style="height: auto; margin-top: 2rem; margin-bottom: 2rem;">
+<section id="section3" class="flex items-center justify-center  py-16 mt-30" style="height: auto; margin-top: 2rem; margin-bottom: 2rem;">
     <div class="bg-white border-4 border-gray-300 shadow-lg rounded-lg p-8 w-4/5 max-w-5xl text-center" style="border-color: #B79877;">
         <h2 class="text-4xl font-bold text-black mb-8">🎓Education🎓</h2>
         
@@ -229,7 +226,7 @@
 
  <!-- WORK?VOLUNTEER SECTION -->
 
-<section id="section4" class="flex items-center justify-center bg-black py-16 mt-30" style="height: auto; margin-top: 2rem; margin-bottom: 2rem;">
+<section id="section4" class="flex items-center justify-center  py-16 mt-30" style="height: auto; margin-top: 2rem; margin-bottom: 2rem;">
     <div class="bg-white border-4 border-gray-300 shadow-lg rounded-lg p-8 w-4/5 max-w-5xl text-center"style="border-color: #F7B801;">
         <h2 class = "text-4xl font-bold text-black mb-8">💼 Work/Volunteer Experience💼 </h2>
         
@@ -447,44 +444,6 @@
         });
     });
 </script>
-
-<script>
-    // Function to create a single emoji particle
-    function createEmojiParticle(x, y, emoji) {
-        const particle = document.createElement('span');
-        particle.textContent = emoji;
-        particle.classList.add('emoji');
-        document.body.appendChild(particle);
-
-        // Position the particle
-        particle.style.left = `${x}px`;
-        particle.style.top = `${y}px`;
-
-        // Animate the particle
-        const size = Math.random() * 20 + 10;
-        particle.style.fontSize = `${size}px`;
-        particle.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * -100 - 50}px) scale(1)`;
-        particle.style.opacity = 0;
-
-        // Remove the particle after animation
-        setTimeout(() => particle.remove(), 1000);
-    }
-
-    // Function to generate multiple emoji particles
-    function generateEmojiParticles(event) {
-        const emojis = ['✨', '🌟', '💫', '🎉', '💥'];
-        const { clientX: x, clientY: y } = event;
-        
-        for (let i = 0; i < 5; i++) {
-            const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-            createEmojiParticle(x, y, emoji);
-        }
-    }
-
-    // Event listener for hovering over the title
-    document.getElementById('intro-title').addEventListener('mouseenter', generateEmojiParticles);
-</script>
-
 
 
 </body>
