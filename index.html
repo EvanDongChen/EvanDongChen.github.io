@@ -422,14 +422,23 @@
 
     
     <!-- Smooth Scroll Script -->
-    <script>
-        document.querySelectorAll('.scroll-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const target = document.querySelector(this.getAttribute('data-target'));
-                target.scrollIntoView({ behavior: 'smooth' });
+   <script>
+    document.querySelectorAll('.scroll-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const target = document.querySelector(this.getAttribute('data-target'));
+            const offset = 115; // Adjust this value to change the scroll offset
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+
+            // Scroll to the calculated position
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
         });
-    </script>
+    });
+</script>
+
+
 </body>
 
 </html>
