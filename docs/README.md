@@ -1,6 +1,6 @@
 # EvanDongChen.github.io
 Evan Chen's portfolio project for CMPT276 Fall 2024 Lab 4.
-Test Message
-Test Message
+This is a public repository, with public access to the GitHub Project.
+Where you can view my 10 issues and acceptance criteria.
 
-Test Message
+Website: [Link to Website](https://evandongchen.github.io/)
